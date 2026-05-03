@@ -1,0 +1,109 @@
+#!/bin/sh
+# ----------------------------------------------------------------------------
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+# ----------------------------------------------------------------------------
+
+# ----------------------------------------------------------------------------
+# Maven Wrapper startup script for Unix
+#
+# Required ENV vars:
+# ------------------
+#   JAVA_HOME - location of a JDK home dir
+#
+# Optional ENV vars:
+# ------------------
+#   MAVEN_OPTS - parameters passed to the Java VM when running Maven
+#     e.g. to debug Maven itself, use
+#       set MAVEN_OPTS=-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000
+# ----------------------------------------------------------------------------
+
+QUOTED_JAVA_EXE=""
+if [ -n "$JAVA_HOME" ] ; then
+  QUOTED_JAVA_EXE="$JAVA_HOME/bin/java"
+  if [ ! -x "$QUOTED_JAVA_EXE" ] ; then
+    echo "Error: JAVA_HOME is set to an invalid directory." >&2
+    echo "  JAVA_HOME = \"$JAVA_HOME\"" >&2
+    echo "  Please set the JAVA_HOME variable in your environment to match the" >&2
+    echo "  location of your Java installation." >&2
+    exit 1
+  fi
+else
+  QUOTED_JAVA_EXE="java"
+  if ! command -v java >/dev/null 2>&1 ; then
+    echo "Error: JAVA_HOME is not set and no 'java' command could be found in your PATH." >&2
+    exit 1
+  fi
+fi
+
+# Find the project base dir, i.e. the directory that contains the folder ".mvn".
+# Fallback to current working directory if not found.
+
+PRG="$0"
+while [ -h "$PRG" ] ; do
+  ls=`ls -ld "$PRG"`
+  link=`expr "$ls" : '.*-> \(.*\)$'`
+  if expr "$link" : '/.*' > /dev/null; then
+    PRG="$link"
+  else
+    PRG="`dirname "$PRG"`/$link"
+  fi
+done
+
+SAVED="`pwd`"
+cd "`dirname "$PRG"`/" >/dev/null
+MAVEN_PROJECTBASEDIR="`pwd`"
+cd "$SAVED" >/dev/null
+
+while [ ! -d "$MAVEN_PROJECTBASEDIR/.mvn" ] && [ "$MAVEN_PROJECTBASEDIR" != "/" ] ; do
+  MAVEN_PROJECTBASEDIR="`dirname "$MAVEN_PROJECTBASEDIR"`"
+done
+
+if [ ! -d "$MAVEN_PROJECTBASEDIR/.mvn" ] ; then
+  MAVEN_PROJECTBASEDIR="`pwd`"
+fi
+
+CLASSPATH=$MAVEN_PROJECTBASEDIR/.mvn/wrapper/maven-wrapper.jar
+
+# Extension to allow automatically downloading the maven-wrapper.jar from the web
+if [ ! -f "$CLASSPATH" ]; then
+    echo ".mvn/wrapper/maven-wrapper.jar not found, downloading it..."
+
+    # Read wrapperUrl from maven-wrapper.properties
+    PROPERTIES_FILE="$MAVEN_PROJECTBASEDIR/.mvn/wrapper/maven-wrapper.properties"
+    if [ -f "$PROPERTIES_FILE" ]; then
+        DOWNLOAD_URL=$(grep '^wrapperUrl=' "$PROPERTIES_FILE" | cut -d'=' -f2-)
+    fi
+    if [ -z "$DOWNLOAD_URL" ]; then
+        DOWNLOAD_URL="https://repo.maven.apache.org/maven2/org/apache/maven/wrapper/maven-wrapper/3.3.2/maven-wrapper-3.3.2.jar"
+    fi
+
+    if command -v curl >/dev/null 2>&1; then
+        curl -sSL "$DOWNLOAD_URL" -o "$CLASSPATH"
+    elif command -v wget >/dev/null 2>&1; then
+        wget -q "$DOWNLOAD_URL" -O "$CLASSPATH"
+    else
+        echo "Error: curl or wget not found. Please download $DOWNLOAD_URL manually to $CLASSPATH" >&2
+        exit 1
+    fi
+fi
+
+exec "$QUOTED_JAVA_EXE" \
+  $MAVEN_OPTS \
+  -classpath "$CLASSPATH" \
+  org.apache.maven.wrapper.MavenWrapperMain \
+  "$@"
