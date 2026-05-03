@@ -27,9 +27,9 @@ export default function Layout() {
     <div className="flex h-screen overflow-hidden text-slate-200">
       <div className="glow-mesh" />
       
-      {/* Sidebar */}
+
       <aside className="w-64 flex-shrink-0 bg-white/5 backdrop-blur-2xl border-r border-white/10 flex flex-col z-20">
-        {/* Logo */}
+
         <div className="px-6 py-8">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-500/20 rotate-3 hover:rotate-0 transition-transform duration-300">
@@ -43,7 +43,7 @@ export default function Layout() {
           </div>
         </div>
 
-        {/* Nav */}
+
         <nav className="flex-1 px-4 space-y-2">
           <p className="px-4 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 mb-4">Main Menu</p>
           {navItems.map(item => (
@@ -64,7 +64,7 @@ export default function Layout() {
           ))}
         </nav>
 
-        {/* User Profile */}
+
         <div className="p-4 mt-auto border-t border-white/5">
           <div className="bg-white/5 rounded-2xl p-4 border border-white/5">
             <div className="flex items-center gap-3 mb-4">
@@ -89,7 +89,7 @@ export default function Layout() {
         </div>
       </aside>
 
-      {/* Main Content */}
+
       <main className="flex-1 overflow-y-auto relative z-10 scroll-smooth">
         <div className="max-w-7xl mx-auto p-8">
           <Outlet />

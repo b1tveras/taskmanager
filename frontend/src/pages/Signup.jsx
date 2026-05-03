@@ -30,7 +30,7 @@ export default function Signup() {
       <div className="glow-mesh" />
       
       <div className="w-full max-w-md relative z-10 py-12">
-        {/* Logo */}
+
         <div className="flex flex-col items-center justify-center gap-4 mb-10 animate-float">
           <div className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-2xl shadow-indigo-500/20 -rotate-3">
             <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">

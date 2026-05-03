@@ -41,7 +41,7 @@ export default function Dashboard() {
         <p className="text-slate-400 text-lg font-medium">Welcome back! Here's the pulse of your workspace today.</p>
       </header>
 
-      {/* Stats Grid */}
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6 mb-12">
         <StatCard label="Projects" value={data?.totalProjects ?? 0} icon={<svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" /></svg>} />
         <StatCard label="Total Tasks" value={data?.totalTasks ?? 0} icon={<svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>} />
@@ -52,7 +52,7 @@ export default function Dashboard() {
       </div>
 
       <div className="grid lg:grid-cols-2 gap-10">
-        {/* Overdue Section */}
+
         <section className="space-y-6">
           <div className="flex items-center justify-between px-2">
             <h2 className="text-xl font-bold text-white flex items-center gap-3">
@@ -97,7 +97,7 @@ export default function Dashboard() {
           </div>
         </section>
 
-        {/* Recent Tasks */}
+
         <section className="space-y-6">
           <div className="flex items-center justify-between px-2">
             <h2 className="text-xl font-bold text-white flex items-center gap-3">

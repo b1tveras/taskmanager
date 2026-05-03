@@ -212,7 +212,7 @@ export default function ProjectDetail() {
 
   return (
     <div className="animate-fade-in pb-20">
-      {/* Header Area */}
+
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12">
         <div className="flex-1 min-w-0">
           <button onClick={() => navigate('/projects')} className="group text-indigo-400 hover:text-indigo-300 text-[11px] font-black uppercase tracking-[0.2em] mb-4 flex items-center gap-2 transition-all">
@@ -236,7 +236,7 @@ export default function ProjectDetail() {
         </div>
       </div>
 
-      {/* Team Ribbon */}
+
       <div className="glass-card rounded-2xl p-4 mb-12 flex items-center justify-between border border-white/5">
         <div className="flex items-center gap-4">
           <div className="px-3 py-1 bg-indigo-500/10 text-indigo-400 text-[10px] font-black uppercase tracking-widest rounded-lg border border-indigo-500/10">Squad</div>
@@ -254,7 +254,7 @@ export default function ProjectDetail() {
         </div>
       </div>
 
-      {/* Kanban Grid */}
+
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
         {COLUMNS.map(col => {
           const colTasks = tasks.filter(t => t.status === col.key)
@@ -283,7 +283,7 @@ export default function ProjectDetail() {
         })}
       </div>
 
-      {/* Modals */}
+
       {showAddTask && (
         <Modal title="Initialize Objective" onClose={() => setShowAddTask(false)}>
           <div className="p-1">
