@@ -104,6 +104,7 @@ fi
 
 exec "$QUOTED_JAVA_EXE" \
   $MAVEN_OPTS \
+  -Dmaven.multiModuleProjectDirectory="${MAVEN_PROJECTBASEDIR}" \
   -classpath "$CLASSPATH" \
   org.apache.maven.wrapper.MavenWrapperMain \
   "$@"
